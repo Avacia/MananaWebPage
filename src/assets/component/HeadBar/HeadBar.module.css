@@ -1,0 +1,39 @@
+.headBarContainer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #292329;
+    width: 100vw;
+    height: 10vh;
+}
+
+
+.logoContainer{
+    margin:1vh 2vw;
+}
+
+
+.headBarBtnContainer{
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+    margin: 1vh 2vw;
+}
+
+
+.headBarBtnContainer > a{
+    color: white;
+    font-family: "Inter";
+}
+
+
+.headBarSignUpBtn{
+    background-color: #FEC51E;
+    color:white;
+    font-size: 1rem;
+    font-family: "Inter";
+    font-weight: 800;
+    padding: 1vh 2vw;
+    border-radius: 10px;
+    border: transparent;
+}
