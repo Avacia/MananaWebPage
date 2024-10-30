@@ -2,6 +2,14 @@ import style from './Body.module.css'
 
 
 export default function Body(){
+
+    function handleScrollPosition(){
+        window.scrollTo({
+            top:1650,
+            behavior: "smooth"
+        })
+    }
+
     return(
         <div className={style.bodyContainer}>
             <div className={style.bodyInfoContainer}>
@@ -11,7 +19,7 @@ export default function Body(){
 
                 <p> Train your resilience as you play.</p>
 
-                <button className={style.bodyInfoBtn}>
+                <button className={style.bodyInfoBtn} onClick={handleScrollPosition}>
                     Join the Waitlist
                 </button>
             </div>

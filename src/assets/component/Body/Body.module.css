@@ -39,6 +39,10 @@
     font-weight: 600;
     border-radius: 10px;
     border: transparent;
+
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .imageContainer > img{

@@ -36,4 +36,8 @@
     padding: 1vh 2vw;
     border-radius: 10px;
     border: transparent;
+
+    &:hover{
+        cursor: pointer;
+    }
 }
