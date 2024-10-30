@@ -30,25 +30,32 @@
 
 .signUpForm{
     margin: 3vh;
+}
+
+
+.signUpFormData{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 3vh;
 }
 
 
-.signUpForm > p{
+.signUpFormData > label{
     font-family: "Inter";
+    font-weight: 500;
     font-size: 1.2rem;
-    margin: 1vh 0.5vw;
 }
 
 
-.signUpForm > input{
-    font-family: "Inter";
-    font-size: 1rem;
-    padding: 1.5vh 1vw;
-    border: 1px solid black;
+.signUpFormData > input{
+    padding: 1vh 1vw;
     border-radius: 10px;
-    margin: 1vh;
+    border: 1px solid black;
+    font-size: 1rem;
+    font-family: "Inter";
+    font-weight: 600;
+    opacity: 0.5;
 }
 
 
@@ -83,4 +90,9 @@
     &:hover{
         cursor: pointer;
     }
+}
+
+
+.errors{
+    color: red;
 }
