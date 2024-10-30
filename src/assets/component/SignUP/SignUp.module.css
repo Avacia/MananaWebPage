@@ -1,0 +1,86 @@
+.signUpContainer{
+    width:100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+    margin-top: 10vh;
+}
+
+
+.signUpTitle{
+    margin: 0 33vw;
+    text-align: center;
+    color:#FEC51E;
+}
+
+
+.signUpTitle > h1{
+    font-size: 3rem;
+}
+
+
+.signUpContainer > p{
+    font-size: 1.5rem;
+    font-family: "Inter";
+    font-weight: 500;
+}
+
+
+.signUpForm{
+    margin: 3vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.signUpForm > p{
+    font-family: "Inter";
+    font-size: 1.2rem;
+    margin: 1vh 0.5vw;
+}
+
+
+.signUpForm > input{
+    font-family: "Inter";
+    font-size: 1rem;
+    padding: 1.5vh 1vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 1vh;
+}
+
+
+.submitBtn{
+    background-color: #FEC51E;
+    padding: 1.3vh 6vw;
+    border: transparent;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-family: "Inter";
+    font-weight: 600;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+.confirmationMessage{
+    position: absolute;
+    top: 245vh;
+    left: 32.5vw;
+    width: 35vw;
+    height: 30vh;
+}
+
+
+.confirmMessageCloseIcon{
+    position: absolute;
+    top: 3vh;
+    right: 2vw;
+    color:white;
+    &:hover{
+        cursor: pointer;
+    }
+}
