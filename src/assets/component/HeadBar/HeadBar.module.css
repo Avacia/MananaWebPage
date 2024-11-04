@@ -13,6 +13,12 @@
 }
 
 
+.logoContainer > a > img{
+    width: 15vw;
+    height: auto;
+}
+
+
 .headBarBtnContainer{
     display: flex;
     align-items: center;

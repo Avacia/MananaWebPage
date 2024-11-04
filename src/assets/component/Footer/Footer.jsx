@@ -5,7 +5,7 @@ export default function Footer(){
         <div className={style.footerContainer}>
             <a href="https://www.manana.co.nz/">
                 <h1>Powered By</h1>
-                <img src='./FooterLogo.png' alt='Footer Logo' />
+                <img src='./Logo.png' alt='Footer Logo' />
             </a>
         </div>
     )
