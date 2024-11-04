@@ -6,10 +6,14 @@ import { useState } from 'react'
 import { useMutation } from 'react-query'
 
 export default function SignUp(){
+    const googleSheetURL = process.env.REACT_APP_GOOGLE_SHEET_URL
     const [isClicked, setIsClicked] = useState(false)
     const [formData, setFormData] = useState({
-        name: '',
-        email: ''
+        firstName: '',
+        lastName: '',
+        email: '',
+        device: '',
+        hearFromUs: '',
     })
     
 
@@ -21,8 +25,9 @@ export default function SignUp(){
         })
     }
 
-    function handleSubmit(){
-        if(!formData.name || !formData.email){
+    function handleSubmit(e){
+        e.preventDefault()
+        if(!formData.firstName || !formData.lastName || !formData.email || !formData.device || !formData.hearFromUs){
             alert("All fields are required!")
             return
         }
@@ -31,6 +36,7 @@ export default function SignUp(){
             alert("Please enter a valid email address!")
             return
         }
+
         mutate()
     }
 
@@ -44,12 +50,12 @@ export default function SignUp(){
     }
 
     const { mutate, isLoading } = useMutation(() => {
-        return fetch(`URL`, {
+        return fetch(googleSheetURL, {
             method: 'POST',
             headers:{
-                'Content-Type': 'application/json'
+                "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: JSON.stringify(formData)
+            body: new URLSearchParams(formData)
         })
         .then((response => response.json()))
     },
@@ -58,8 +64,11 @@ export default function SignUp(){
             setIsClicked(true)
             console.log("Success", data)
             setFormData({
-                name: "",
-                email: ""
+                firstName: "",
+                lastName: "",
+                email: "",
+                device: "",
+                hearFromUs: ""
             })
         },
         onError: (error) => {
@@ -69,6 +78,8 @@ export default function SignUp(){
     }
     )
 
+    console.log("First Name: ", formData.firstName, "Last Name: " , formData.lastName, "Email: ", formData.email, "Device: ", formData.device, "Hear From Us: ", formData.hearFromUs)
+
     return(
         <div className={style.signUpContainer}>
             <div className={style.signUpTitle}>
@@ -77,35 +88,85 @@ export default function SignUp(){
 
             <p>Sign up now to receive updates, early access to join our community.</p>
 
-            <div className={style.signUpForm} onSubmit={handleSubmit}>
-                <form className={style.signUpFormData}>
-                    <label htmlFor="name">Name:</label>
-                    <input 
-                        type="text"
-                        name="name"
-                        value={formData.name} 
-                        onChange={handleUserInput} 
-                        required
-                        placeholder="Full Name" 
-                    />
-                    <label htmlFor="email">Email:</label>
-                    <input 
-                        type="text"
-                        name="email"
-                        value={formData.email}    
-                        onChange={handleUserInput}
-                        required
-                        placeholder="youremail@example.com" 
-                    />
+            <div className={style.signUpForm} >
+                <form className={style.signUpFormData} onSubmit={handleSubmit}>
+                    <div className={style.formInfoName}>
+                        <label htmlFor="name">Name:</label>
+                        <div className={style.formInput}>
+                            <input 
+                                type="text"
+                                name="firstName"
+                                value={formData.firstName} 
+                                onChange={handleUserInput} 
+                                required
+                                placeholder="First Name" 
+                            />
+                            <input 
+                                type="text"
+                                name="lastName"
+                                value={formData.lastName} 
+                                onChange={handleUserInput} 
+                                required
+                                placeholder="Last Name" 
+                            />
+                        </div>
+                    </div>
+                    
+                    <div className={style.formInfo}>
+                        <label htmlFor="email">Email:</label>
+                        <input 
+                            type="text"
+                            name="email"
+                            value={formData.email}    
+                            onChange={handleUserInput}
+                            required
+                            placeholder="youremail@example.com" 
+                        />
+                    </div>
+                    
+                    <div className={style.formInfo}>
+                        <label htmlFor="device">Device:</label>
+                        <select
+                            name="device"
+                            value={formData.device}
+                            onChange={handleUserInput}
+                            required
+                        >
+                            <option value='' disabled>Select a device</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Desktop">Desktop</option>
+                            <option value="Android Phone">Android Phone</option>
+                            <option value="IPhone">IPhone</option>
+                        </select>
+                    </div>
 
-                    <button className={style.submitBtn} onClick={handleSubmit}>Sign Up</button>
+                    <div className={style.formInfo}>
+                        <label htmlFor="hearFromUs">Hear Us From:</label>
+                        <select
+                            name="hearFromUs"
+                            value={formData.hearFromUs}
+                            onChange={handleUserInput}
+                            required
+                        >
+                            <option value='' disabled>Select an option</option>
+                            <option value='LinkedIn'>LinkedIn</option>
+                            <option value='Conference'>Conference</option>
+                            <option value="None">None of above</option>
+                        </select>
+                    </div>
+
+                    {!isLoading && !isClicked && <button className={style.submitBtn} onClick={handleSubmit}>Sign Up</button>}
+                    {isLoading && <button className={style.submitBtn} disabled>Submitting</button>}
                 </form>
             </div>
 
             {
                 isClicked && 
                     <div className={style.confirmationMessage}>
-                        <FontAwesomeIcon className={style.confirmMessageCloseIcon} icon={faXmark} onClick={handleClose}/>
+                        <FontAwesomeIcon 
+                            className={style.confirmMessageCloseIcon} 
+                            icon={faXmark} 
+                            onClick={handleClose}/>
                         <ConfirmMessage />
                     </div>
             }

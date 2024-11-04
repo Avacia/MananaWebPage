@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2vh;
-    margin-top: 10vh;
+    margin-top: 15vh;
 }
 
 
@@ -30,7 +30,8 @@
 
 
 .signUpForm{
-    margin: 3vh;
+    margin-top: 8vh;
+    margin-left: 3vw;
 }
 
 
@@ -42,14 +43,27 @@
 }
 
 
-.signUpFormData > label{
+.formInfo, .formInfoName{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2vw;
+}
+
+
+.formInfoName{
+    gap:1vw;
+}
+
+
+.formInfo > label, .formInfoName > label{
     font-family: "Inter";
     font-weight: 500;
     font-size: 1.2rem;
 }
 
 
-.signUpFormData > input{
+.formInfo > input, select{
     padding: 1vh 1vw;
     border-radius: 10px;
     border: 1px solid black;
@@ -57,6 +71,34 @@
     font-family: "Inter";
     font-weight: 600;
     opacity: 0.5;
+    width: 20vw;
+}
+
+
+.formInput{
+    display: flex;
+    gap: 1vw;
+}
+
+
+.formInput > input{
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 1rem;
+    font-family: "Inter";
+    font-weight: 600;
+    opacity: 0.5;
+}
+
+
+.formInput > input:nth-of-type(1){
+    width: 8vw;
+}
+
+
+.formInput > input:nth-of-type(2){
+    width: 11vw;
 }
 
 
@@ -68,6 +110,9 @@
     font-size: 1.2rem;
     font-family: "Inter";
     font-weight: 600;
+    width: 20vw;
+    margin-left: 10vw;
+    align-self: center;
     &:hover{
         cursor: pointer;
     }

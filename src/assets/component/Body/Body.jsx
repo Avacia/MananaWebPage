@@ -5,7 +5,7 @@ export default function Body(){
 
     function handleScrollPosition(){
         window.scrollTo({
-            top:1650,
+            top:1600,
             behavior: "smooth"
         })
     }

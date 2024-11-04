@@ -4,7 +4,7 @@ export default function HeadBar(){
 
     function handleScrollPosition(){
         window.scrollTo({
-            top:1650,
+            top:1600,
             behavior: "smooth"
         })
     }
