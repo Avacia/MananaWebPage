@@ -82,84 +82,86 @@ export default function SignUp(){
 
     return(
         <div className={style.signUpContainer}>
-            <div className={style.signUpTitle}>
-                <h1>Be one of the first to try HEART DRIVE</h1>
-            </div>
+            <div className={`${style.signUpContent} ${isClicked ? style.blurred : ""}`}>
+                <div className={style.signUpTitle}>
+                    <h1>Be one of the first to try HEART DRIVE</h1>
+                </div>
 
-            <p>Sign up now to receive updates, early access to join our community.</p>
+                <p>Sign up now to receive updates, early access to join our community.</p>
 
-            <div className={style.signUpForm} >
-                <form className={style.signUpFormData} onSubmit={handleSubmit}>
-                    <div className={style.formInfoName}>
-                        <label htmlFor="name">Name:</label>
-                        <div className={style.formInput}>
+                <div className={style.signUpForm} >
+                    <form className={style.signUpFormData} onSubmit={handleSubmit}>
+                        <div className={style.formInfoName}>
+                            <label htmlFor="name">Name:</label>
+                            <div className={style.formInput}>
+                                <input 
+                                    type="text"
+                                    name="firstName"
+                                    value={formData.firstName} 
+                                    onChange={handleUserInput} 
+                                    required
+                                    placeholder="First Name" 
+                                />
+                                <input 
+                                    type="text"
+                                    name="lastName"
+                                    value={formData.lastName} 
+                                    onChange={handleUserInput} 
+                                    required
+                                    placeholder="Last Name" 
+                                />
+                            </div>
+                        </div>
+                        
+                        <div className={style.formInfo}>
+                            <label htmlFor="email">Email:</label>
                             <input 
                                 type="text"
-                                name="firstName"
-                                value={formData.firstName} 
-                                onChange={handleUserInput} 
+                                name="email"
+                                value={formData.email}    
+                                onChange={handleUserInput}
                                 required
-                                placeholder="First Name" 
-                            />
-                            <input 
-                                type="text"
-                                name="lastName"
-                                value={formData.lastName} 
-                                onChange={handleUserInput} 
-                                required
-                                placeholder="Last Name" 
+                                placeholder="youremail@example.com" 
                             />
                         </div>
-                    </div>
-                    
-                    <div className={style.formInfo}>
-                        <label htmlFor="email">Email:</label>
-                        <input 
-                            type="text"
-                            name="email"
-                            value={formData.email}    
-                            onChange={handleUserInput}
-                            required
-                            placeholder="youremail@example.com" 
-                        />
-                    </div>
-                    
-                    <div className={style.formInfo}>
-                        <label htmlFor="device">Device:</label>
-                        <select
-                            name="device"
-                            value={formData.device}
-                            onChange={handleUserInput}
-                            required
-                        >
-                            <option value='' disabled>Select a device</option>
-                            <option value="Laptop">Laptop</option>
-                            <option value="Desktop">Desktop</option>
-                            <option value="Android Phone">Android Phone</option>
-                            <option value="IPhone">IPhone</option>
-                        </select>
-                    </div>
+                        
+                        <div className={style.formInfo}>
+                            <label htmlFor="device">What kind of device do you own?</label>
+                            <select
+                                name="device"
+                                value={formData.device}
+                                onChange={handleUserInput}
+                                required
+                            >
+                                <option value='' disabled>Select a device</option>
+                                <option value="Laptop">Android</option>
+                                <option value="Desktop">IOS</option>
+                                <option value="Android Phone">Windows</option>
+                                <option value="IPhone">Don't know</option>
+                            </select>
+                        </div>
 
-                    <div className={style.formInfo}>
-                        <label htmlFor="hearFromUs">Hear Us From:</label>
-                        <select
-                            name="hearFromUs"
-                            value={formData.hearFromUs}
-                            onChange={handleUserInput}
-                            required
-                        >
-                            <option value='' disabled>Select an option</option>
-                            <option value='LinkedIn'>LinkedIn</option>
-                            <option value='Conference'>Conference</option>
-                            <option value="None">None of above</option>
-                        </select>
-                    </div>
+                        <div className={style.formInfo}>
+                            <label htmlFor="hearFromUs">Where did you hear about us from?</label>
+                            <select
+                                name="hearFromUs"
+                                value={formData.hearFromUs}
+                                onChange={handleUserInput}
+                                required
+                            >
+                                <option value='' disabled>Select an option</option>
+                                <option value='LinkedIn'>LinkedIn</option>
+                                <option value='Conference'>Conference</option>
+                                <option value="None">None of above</option>
+                            </select>
+                        </div>
 
-                    {!isLoading && !isClicked && <button className={style.submitBtn} onClick={handleSubmit}>Sign Up</button>}
-                    {isLoading && <button className={style.submitBtn} disabled>Submitting</button>}
-                </form>
+                        {!isLoading && !isClicked && <button className={style.submitBtn} onClick={handleSubmit}>Sign Up</button>}
+                        {isLoading && <button className={style.submitBtn} disabled>Submitting</button>}
+                    </form>
+                </div>
+
             </div>
-
             {
                 isClicked && 
                     <div className={style.confirmationMessage}>
